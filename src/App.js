@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ExampleA from "./exampleA/ExampleA";
 
 function App() {
+  const [tab, setTab] = useState("tabA");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="tab">
+        <button class="tablinks" onClick={() => setTab("tabA")}>
+          Example A
+        </button>
+        <button class="tablinks" onClick={() => setTab("tabB")}>
+          Example B
+        </button>
+      </div>
+      {tab === "tabA" && <ExampleA />}
     </div>
   );
 }
