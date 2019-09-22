@@ -1,17 +1,13 @@
-.App {
+.app {
   max-width: 1012px;
   margin-right: auto;
 margin-left: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
 .tab{
   margin: 1em;
+}
+
+.event-list--item{
+  color: red;
 }

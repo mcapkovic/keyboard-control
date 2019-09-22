@@ -3,18 +3,20 @@ import {
   moveOnMax,
   moveOnBackspace,
   arrows,
-  nextElement,
-  prevElement
-} from "../utils";
+  focusNextElByEvent,
+  focusPrevElByEvent
+} from "./utils";
 
 function onDown(event, inputId) {
+  event.persist();
+  console.log(event);
   if (event.altKey) {
     switch (arrows(event)) {
       case "right":
-        nextElement(event);
+        focusNextElByEvent(event);
         break;
       case "left":
-        prevElement(event);
+        focusPrevElByEvent(event);
         break;
       default:
         break;

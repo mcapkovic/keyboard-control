@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import "./App.css";
 import ExampleA from "./exampleA/ExampleA";
+import ExampleB from "./exampleB/ExampleB";
 
 function App() {
   const [tab, setTab] = useState("tabA");
   return (
-    <div className="App">
-      <div class="tab">
-        <button class="tablinks" onClick={() => setTab("tabA")}>
+    <div className="app">
+      <div className="tab">
+        <button className="tab--button" onClick={() => setTab("tabA")}>
           Example A
         </button>
-        <button class="tablinks" onClick={() => setTab("tabB")}>
+        <button className="tab--button" onClick={() => setTab("tabB")}>
           Example B
         </button>
       </div>
       <hr />
       {tab === "tabA" && <ExampleA />}
+      {tab === "tabB" && <ExampleB />}
     </div>
   );
 }
