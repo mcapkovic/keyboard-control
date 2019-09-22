@@ -14,6 +14,7 @@ function App() {
           Example B
         </button>
       </div>
+      <hr />
       {tab === "tabA" && <ExampleA />}
     </div>
   );
