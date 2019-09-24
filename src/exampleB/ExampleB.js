@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import InfoSection from "./InfoSection";
 
 function onKeyEvent(event, setEventKey) {
-//   console.log(event);
+  //   console.log(event);
   const { id, previousSibling, nextSibling } = event.target;
   setEventKey({
     key: event.key,
@@ -14,32 +15,42 @@ function onKeyEvent(event, setEventKey) {
 
 function ExampleB(props) {
   const [eventKey, setEventKey] = useState({});
+  const [eventKey2, setEventKey2] = useState({});
+  const [handleAllEl, setHandleAllEl] = useState(false);
   return (
     <div>
       <p>KeyboardEventHandler:</p>
-      <ul>
-        <li>
-          key detected: <span className='event-list--item'>{eventKey.key}</span>
-        </li>
-        <li>
-          previousSibling id: <span className='event-list--item'>{eventKey.previousSibling}</span>
-        </li>
-        <li>
-          selected input id: <span className='event-list--item'>{eventKey.id}</span>
-        </li>
-        <li>
-          nextSibling id: <span className='event-list--item'>{eventKey.nextSibling}</span>
-        </li>
-      </ul>
+      <InfoSection eventKey={eventKey} />
+      <div>
+        <input
+          type="checkbox"
+          id="id1"
+          onChange={() => setHandleAllEl(!handleAllEl)}
+          checked={handleAllEl}
+        />
+        <label for="id1">handleFocusableElements</label>
+      </div>
       <KeyboardEventHandler
         handleKeys={["all"]}
         onKeyEvent={(key, e) => onKeyEvent(e, setEventKey)}
+        handleFocusableElements={handleAllEl}
+      />
+      <input id="input1" />
+      <input id="input2" />
+      <input id="input3" />
+      <hr />
+      <p>KeyboardEventHandler only for wrapped children:</p>
+      <InfoSection eventKey={eventKey2} />
+      <KeyboardEventHandler
+        handleKeys={["all"]}
+        onKeyEvent={(key, e) => onKeyEvent(e, setEventKey2)}
       >
         <input id="input1" />
         <input id="input2" />
         <input id="input3" />
         <button id="button1">button1</button>
       </KeyboardEventHandler>
+      <hr />
     </div>
   );
 }
